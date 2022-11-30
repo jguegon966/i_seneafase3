@@ -7,12 +7,15 @@ import 'package:provider/provider.dart';
 import 'second_screen.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
-
+  const LoginScreen({
+    Key? key, 
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
+
+    
 
     final Map<String, String> formValues = {
       'username': 'chechu',
@@ -30,9 +33,27 @@ class LoginScreen extends StatelessWidget {
   }
 
   SingleChildScrollView login(GlobalKey<FormState> myFormKey,
-      Map<String, String> formValues, BuildContext context) {
+    Map<String, String> formValues, BuildContext context) {
+        
+      final userProvider = Provider.of<ProveedorDatos>(context);
 
-        final userProvider = Provider.of<ProveedorDatos>(context, listen: true);
+      final users = userProvider.onUsers;
+
+      void comprobarUsuario(BuildContext context){
+
+      users.forEach((user) {
+        if(user.usuario == formValues['username'] && user.clave == formValues['password']) {
+          print(user.usuario + user.clave);
+          Navigator.push(context,
+            MaterialPageRoute(
+              builder: (context) =>
+                SecondScreen(username: formValues['username'], password: formValues['password'])),
+          );
+        }
+      
+      });
+
+    }
         
     return SingleChildScrollView(
       child: Padding(
@@ -72,19 +93,7 @@ class LoginScreen extends StatelessWidget {
                           fontSize: 25, fontWeight: FontWeight.w600)),
                   onPressed: () {
                     FocusScope.of(context).requestFocus(FocusNode());
-
-                    if (!myFormKey.currentState!.validate()) {
-                      print('Datos no validos');
-                      print(userProvider.toString());
-                      return;
-                    } 
-                      print(userProvider.toString());
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                SecondScreen(username: formValues['username'], password: formValues['password'])),
-                      );
+                    comprobarUsuario(context);
                     print(formValues);
                   },
                   child: const SizedBox(

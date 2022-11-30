@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:i_seneca/models/menu_options.dart';
+import 'package:i_seneca/providers/data_provider.dart';
 import 'package:i_seneca/screens/second_screen.dart';
+import 'package:provider/provider.dart';
 
 import '../screens/login_screen.dart';
 

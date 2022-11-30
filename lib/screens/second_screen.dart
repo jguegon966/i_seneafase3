@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 class SecondScreen extends StatelessWidget {
   final String? username;
   final String? password;
+  
 
   //final datas = Provider.of<DataproviderScreen>(context);
   //print(moviesProvider.onDisplayMovies);
@@ -16,43 +17,7 @@ class SecondScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<ProveedorDatos>(context, listen: true);
 
-    return FutureBuilder(
-        future: userProvider.getDataFromGoogleSheet(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            snapshot.data.forEach((user) {
-              if (user.usuario.toString() == username && user.clave.toString() == password) {
-                print(user.usuario + user.clave + username + password);
-                return CargaCompetada(username: username, password: password);
-              }
-            });
-            return const SizedBox(
-              height: 400.0,
-              child: Center(child: CircularProgressIndicator()),
-            );
-          }
-          return const SizedBox(
-            height: 400.0,
-            child: Center(child: CircularProgressIndicator()),
-          );
-        });
-  }
-}
-
-class CargaCompetada extends StatelessWidget {
-  const CargaCompetada({
-    Key? key,
-    required this.username,
-    required this.password,
-  }) : super(key: key);
-
-  final String? username;
-  final String? password;
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -145,3 +110,4 @@ class CargaCompetada extends StatelessWidget {
     );
   }
 }
+

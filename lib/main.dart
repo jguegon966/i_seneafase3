@@ -5,15 +5,16 @@ import 'package:provider/provider.dart';
 import 'routes/app_routes.dart';
 import 'theme/app_theme.dart';
 
-void main() => runApp(AppState());
+void main() => runApp(const AppState());
 
 class AppState extends StatelessWidget {
+  const AppState({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: ( _ ) => ProveedorDatos(), lazy: true,)
+        ChangeNotifierProvider(create: ( _ ) => ProveedorDatos(), lazy: false,)
         ],
         child: const MyApp(),
       );
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',

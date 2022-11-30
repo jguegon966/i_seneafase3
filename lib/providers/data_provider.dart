@@ -8,7 +8,14 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class ProveedorDatos extends ChangeNotifier {
-  Future<List<User>> getDataFromGoogleSheet() async {
+
+  List<User> onUsers = [];
+
+  ProveedorDatos() {
+    _getDataFromGoogleSheet();
+  }
+
+  Future<List<User>> _getDataFromGoogleSheet() async {
     var url =
         'https://script.google.com/macros/s/AKfycbzq6EP_1jV1RP7YO7dVMl0wRApuSWrQWWcOMdpbL6okGek_y3anbmIqQU48iOBz3h9m/exec?spreadsheetId=1SPFk04l6FtyrZlWDTGGSsMZhXuLTrPrGUuLB3BUCvcs&sheet=usuarios';
     
@@ -16,18 +23,17 @@ class ProveedorDatos extends ChangeNotifier {
 
     dynamic jsonAppData = convert.jsonDecode(data.body);
 
-    final List<User> listaUsuarios = [];
-
     for (dynamic data in jsonAppData) {
       User user = User(
         id: data['id'], 
         usuario: data['usuario'], 
         clave: data['clave']
       );
-      listaUsuarios.add(user);
+      onUsers.add(user);
     }
 
-    return listaUsuarios;
+    return onUsers;
 
   }
+
 }
