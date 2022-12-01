@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:i_seneca/providers/data_provider.dart';
 import 'package:i_seneca/theme/app_theme.dart';
@@ -6,16 +7,19 @@ import 'package:provider/provider.dart';
 
 import 'second_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({
-    Key? key, 
+    Key? key,
   }) : super(key: key);
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
-
-    
 
     final Map<String, String> formValues = {
       'username': 'chechu',
@@ -33,28 +37,60 @@ class LoginScreen extends StatelessWidget {
   }
 
   SingleChildScrollView login(GlobalKey<FormState> myFormKey,
-    Map<String, String> formValues, BuildContext context) {
-        
-      final userProvider = Provider.of<ProveedorDatos>(context);
+      Map<String, String> formValues, BuildContext context) {
+    final userProvider = Provider.of<ProveedorDatos>(context);
 
-      final users = userProvider.onUsers;
+    final users = userProvider.onUsers;
 
-      void comprobarUsuario(BuildContext context){
+    void comprobarUsuario(BuildContext context) {
+      int _marca = 0;
 
       users.forEach((user) {
-        if(user.usuario == formValues['username'] && user.clave == formValues['password']) {
+        if (user.usuario == formValues['username'] &&
+            user.clave == formValues['password']) {
           print(user.usuario + user.clave);
-          Navigator.push(context,
+          _marca = 1;
+          Navigator.push(
+            context,
             MaterialPageRoute(
-              builder: (context) =>
-                SecondScreen(username: formValues['username'], password: formValues['password'])),
+                builder: (context) => SecondScreen(
+                    username: formValues['username'],
+                    password: formValues['password'])),
           );
         }
-      
       });
 
+      if(_marca == 0){
+        showCupertinoDialog(
+          barrierDismissible: true,
+          context: context,
+          builder: (context) {
+            return CupertinoAlertDialog(
+              title: const Text('Error de Usuario'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Text('Usuario no encontrado en la base de datos'),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  FlutterLogo(
+                    size: 100,
+                  )
+                ],
+              ),
+              actions: [
+                TextButton(
+                    onPressed: (() => Navigator.pop(context)),
+                    child: const Text('OK',
+                        style: TextStyle(color: Colors.red))),
+              ],
+            );
+          });
+      }
+      
     }
-        
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
