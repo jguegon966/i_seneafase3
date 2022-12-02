@@ -128,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       textStyle: const TextStyle(
                           fontSize: 25, fontWeight: FontWeight.w600)),
                   onPressed: () {
-                    //FocusScope.of(context).requestFocus(FocusNode());
+                    FocusScope.of(context).requestFocus(FocusNode());
                     comprobarUsuario(context);
                     print(formValues);
                   },
