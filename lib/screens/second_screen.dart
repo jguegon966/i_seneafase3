@@ -153,35 +153,159 @@ class SecondScreen extends StatelessWidget {
                 ),
               ),
 
-              
-              Flexible(
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 360,
-                    ),
-                    SizedBox(
-                      height: 300,
-                      child: GridView.count(  
-                        padding: const EdgeInsets.all(20),
-                        crossAxisCount: 3,  
-                        crossAxisSpacing: 4.0,  
-                        mainAxisSpacing: 8.0,  
-                        children: List.generate(choices.length, (index) {  
-                          return Center(  
-                            child: SelectCard(choice: choices[index]),  
-                          );  
-                        }  
-                      ) 
-                      ),
-                    ),
-                  ],
-                ),
-              )
-
             ]
             
           ),
+
+          const SizedBox(
+            height: 100,
+          ),
+
+          Row(
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                Column(
+                  children: const [
+                    SizedBox(
+                      width: 100,
+                    ),
+                    Image(
+                      image: AssetImage('assets/sombrero.png'),
+                      width: 60,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      'Alumnado del',
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      textAlign: TextAlign.start,
+                    ),
+                    Text(
+                      'centro',
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+                Column(
+                  children: [
+                    IconButton(
+                        icon: Image.asset('assets/profesor.png'),
+                        iconSize: 60,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const LoginScreen()),
+                          );
+                        }),
+                    const Text(
+                      'Personal del',
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      textAlign: TextAlign.start,
+                    ),
+                    const Text(
+                      'centro',
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+                Column(
+                  children: const [
+                    Image(
+                      image: AssetImage('assets/covid.png'),
+                      width: 60,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      'Informacion',
+                      style: TextStyle(fontSize: 21, color: Colors.black),
+                      textAlign: TextAlign.start,
+                    ),
+                    Text(
+                      'Covid',
+                      style: TextStyle(fontSize: 21, color: Colors.black),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 90,
+            ),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 65,
+                ),
+                Column(
+                  children: const [
+                    SizedBox(
+                      width: 100,
+                    ),
+                    Image(
+                      image: AssetImage('assets/calendario.png'),
+                      width: 60,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      'Calendario',
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      textAlign: TextAlign.start,
+                    ),
+                    Text(
+                      'escolar',
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  width: 65,
+                ),
+                Column(
+                  children: const [
+                    Image(
+                      image: AssetImage('assets/campana.png'),
+                      width: 60,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      'Tablon de',
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      textAlign: TextAlign.start,
+                    ),
+                    Text(
+                      'anuncios',
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+                Column(),
+              ],
+            ),
 
           
         ],
@@ -189,39 +313,3 @@ class SecondScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-class Choice {  
-  const Choice({required this.title, required this.image});  
-  final String title;  
-  final AssetImage image;  
-}  
-  
-const List<Choice> choices = <Choice>[  
-  Choice(title: 'Alumnado del centro', image: AssetImage('assets/sombrero.png')),  
-  Choice(title: 'Personal del centro', image: AssetImage('assets/profesor.png')),  
-  Choice(title: 'Informacion Covid', image: AssetImage('assets/covid.png')),  
-  Choice(title: 'Tablon de anuncios', image: AssetImage('assets/campana.png')),  
-  Choice(title: 'Calendario Escolar', image: AssetImage('assets/calendario.png')),
-];  
-  
-class SelectCard extends StatelessWidget {  
-  const SelectCard({Key? key, required this.choice}) : super(key: key);  
-  final Choice choice;  
-  
-  @override  
-  Widget build(BuildContext context) {  
-    return Card(  
-        color: Colors.white,  
-        child: Center(child: Column(  
-            crossAxisAlignment: CrossAxisAlignment.center,  
-            children: <Widget>[  
-              Image(image: choice.image, height: 50, width: 50,),  
-              Text(choice.title, textAlign: TextAlign.center, style: const TextStyle(fontWeight: FontWeight.bold),),  
-            ]  
-        ),  
-        )  
-    );  
-  }  
-} 
