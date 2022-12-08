@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:i_seneca/models/data_response.dart';
 import 'package:i_seneca/providers/data_provider.dart';
+import 'package:i_seneca/screens/ListViewAlumnos.dart';
 import 'package:i_seneca/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -85,9 +86,9 @@ class SecondScreen extends StatelessWidget {
                         Row(
                           children: [
                             const Padding(padding: EdgeInsets.only(left: 20, top: 50)),
-                            Text('$username, $password',
+                            Text('$username',
                             style: const TextStyle(fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold)),
-                            const Padding(padding: EdgeInsets.only(left: 220)),
+                            const Padding(padding: EdgeInsets.only(left: 100)),
                             const Icon(Icons.people_rounded)
                           ],
                         ),
@@ -169,23 +170,30 @@ class SecondScreen extends StatelessWidget {
                   width: 50,
                 ),
                 Column(
-                  children: const [
-                    SizedBox(
+                  children: [
+                    const SizedBox(
                       width: 100,
                     ),
-                    Image(
-                      image: AssetImage('assets/sombrero.png'),
-                      width: 60,
-                    ),
-                    SizedBox(
+                    IconButton(
+                        icon: Image.asset('assets/sombrero.png'),
+                        iconSize: 60,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const ListviewAlumnado()),
+                          );
+                        }),
+                    const SizedBox(
                       height: 15,
                     ),
-                    Text(
+                    const Text(
                       'Alumnado del',
                       style: TextStyle(fontSize: 20, color: Colors.black),
                       textAlign: TextAlign.start,
                     ),
-                    Text(
+                    const Text(
                       'centro',
                       style: TextStyle(fontSize: 20, color: Colors.black),
                       textAlign: TextAlign.start,
