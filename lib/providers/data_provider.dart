@@ -27,7 +27,9 @@ class ProveedorDatos extends ChangeNotifier {
       User user = User(
         id: data['id'], 
         usuario: data['usuario'], 
-        clave: data['clave']
+        clave: data['clave'], 
+        telefono: data['telefono'],
+        mail: data['mail']
       );
       onUsers.add(user);
     }

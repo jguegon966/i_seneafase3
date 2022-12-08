@@ -35,7 +35,7 @@ class ListviewProfesores extends StatelessWidget {
               onTap: () {
 
                 Navigator.push(context, 
-                  MaterialPageRoute(builder: (context) => const ListviewCorreoTelefono()));
+                  MaterialPageRoute(builder: (context) => ListviewCorreoTelefono(telefono: '$user.telefono', mail: '$user.mail',)));
 
               }
             )).toList(),
