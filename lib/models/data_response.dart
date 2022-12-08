@@ -4,25 +4,6 @@
 
 import 'dart:convert';
 
-class UserList {
-  final List<User> userList;
-
-  UserList({
-    required this.userList,
-  });
-
-  factory UserList.fromJson(List<dynamic> parsedJson) {
-
-    List<User> listaResponse = <User>[];
-    listaResponse = parsedJson.map((i)=>User.fromJson(i)).toList();
-
-    return UserList(
-       userList: listaResponse,
-    );
-  }
-
-}
-
 class User {
     User({
         this.id,

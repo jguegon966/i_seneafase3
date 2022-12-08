@@ -4,6 +4,8 @@ import 'package:i_seneca/providers/data_provider.dart';
 import 'package:i_seneca/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 
+import 'listViewProfesorado.dart';
+
 class SecondScreen extends StatelessWidget {
   final String? username;
   final String? password;
@@ -203,7 +205,7 @@ class SecondScreen extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    const LoginScreen()),
+                                    const ListviewProfesores()),
                           );
                         }),
                     const Text(
