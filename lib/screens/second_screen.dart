@@ -161,22 +161,22 @@ class SecondScreen extends StatelessWidget {
           ),
 
           const SizedBox(
-            height: 100,
+            height: 50,
           ),
 
           Row(
               children: [
                 const SizedBox(
-                  width: 50,
+                  width: 20,
                 ),
                 Column(
                   children: [
                     const SizedBox(
-                      width: 100,
+                      width: 20,
                     ),
                     IconButton(
                         icon: Image.asset('assets/sombrero.png'),
-                        iconSize: 60,
+                        iconSize: 30,
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -190,24 +190,24 @@ class SecondScreen extends StatelessWidget {
                     ),
                     const Text(
                       'Alumnado del',
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      style: TextStyle(fontSize: 15, color: Colors.black),
                       textAlign: TextAlign.start,
                     ),
                     const Text(
                       'centro',
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      style: TextStyle(fontSize: 15, color: Colors.black),
                       textAlign: TextAlign.start,
                     ),
                   ],
                 ),
                 const SizedBox(
-                  width: 50,
+                  width: 30,
                 ),
                 Column(
                   children: [
                     IconButton(
                         icon: Image.asset('assets/profesor.png'),
-                        iconSize: 60,
+                        iconSize: 30,
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -218,49 +218,51 @@ class SecondScreen extends StatelessWidget {
                         }),
                     const Text(
                       'Personal del',
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      style: TextStyle(fontSize: 15, color: Colors.black),
                       textAlign: TextAlign.start,
                     ),
                     const Text(
                       'centro',
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      style: TextStyle(fontSize: 15, color: Colors.black),
                       textAlign: TextAlign.start,
                     ),
                   ],
                 ),
                 const SizedBox(
-                  width: 50,
+                  width: 15,
                 ),
-                Column(
-                  children: const [
-                    Image(
-                      image: AssetImage('assets/covid.png'),
-                      width: 60,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      'Informacion',
-                      style: TextStyle(fontSize: 21, color: Colors.black),
-                      textAlign: TextAlign.start,
-                    ),
-                    Text(
-                      'Covid',
-                      style: TextStyle(fontSize: 21, color: Colors.black),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
+                Expanded(
+                  child: Column(
+                    children: const [
+                      Image(
+                        image: AssetImage('assets/covid.png'),
+                        width: 30,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'Informacion',
+                        style: TextStyle(fontSize: 15, color: Colors.black),
+                        textAlign: TextAlign.start,
+                      ),
+                      Text(
+                        'Covid',
+                        style: TextStyle(fontSize: 15, color: Colors.black),
+                        textAlign: TextAlign.start,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
             const SizedBox(
-              height: 90,
+              height: 50,
             ),
             Row(
               children: [
                 const SizedBox(
-                  width: 65,
+                  width: 20,
                 ),
                 Column(
                   children: const [
@@ -269,43 +271,43 @@ class SecondScreen extends StatelessWidget {
                     ),
                     Image(
                       image: AssetImage('assets/calendario.png'),
-                      width: 60,
+                      width: 30,
                     ),
                     SizedBox(
                       height: 15,
                     ),
                     Text(
                       'Calendario',
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      style: TextStyle(fontSize: 15, color: Colors.black),
                       textAlign: TextAlign.start,
                     ),
                     Text(
                       'escolar',
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      style: TextStyle(fontSize: 15, color: Colors.black),
                       textAlign: TextAlign.start,
                     ),
                   ],
                 ),
                 const SizedBox(
-                  width: 65,
+                  width: 30,
                 ),
                 Column(
                   children: const [
                     Image(
                       image: AssetImage('assets/campana.png'),
-                      width: 60,
+                      width: 30,
                     ),
                     SizedBox(
                       height: 15,
                     ),
                     Text(
                       'Tablon de',
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      style: TextStyle(fontSize: 15, color: Colors.black),
                       textAlign: TextAlign.start,
                     ),
                     Text(
                       'anuncios',
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      style: TextStyle(fontSize: 15, color: Colors.black),
                       textAlign: TextAlign.start,
                     ),
                   ],
@@ -313,11 +315,8 @@ class SecondScreen extends StatelessWidget {
                 const SizedBox(
                   width: 50,
                 ),
-                Column(),
               ],
             ),
-
-          
         ],
       ),
     );
